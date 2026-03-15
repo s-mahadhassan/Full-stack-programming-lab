@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Box Generator</title>
+    <link rel="stylesheet" href="color.css">
+    <script src="color.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Color Box Generator</h2>
+
+    <div class="input-group">
+        <label>Color 1</label>
+        <input type="text" id="color1" placeholder="e.g. red or #ff0000">
+    </div>
+
+    <div class="input-group">
+        <label>Color 2</label>
+        <input type="text" id="color2" placeholder="e.g. blue or #0000ff">
+    </div>
+
+    <div class="input-group">
+        <label>Color 3</label>
+        <input type="text" id="color3" placeholder="e.g. green or #00ff00">
+    </div>
+
+    <button type="button" class="submit-btn" onclick="addColors()">Add Colors</button>
+    <button type="button" class="reset-btn" onclick="clearBoxes()">Clear Boxes</button>
+
+    <div id="boxContainer"></div>
+
+    <div id="browserInfo"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

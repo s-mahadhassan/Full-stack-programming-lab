@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 500px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* Questions */
+.question {
+    margin-bottom: 25px;
+}
+
+.question p {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #374151;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    transition: border 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* Buttons - vertical layout */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.submit-btn {
+    background-color: #2563eb;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #1e40af;
+}
+
+.reset-btn {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+.reset-btn:hover {
+    background-color: #d1d5db;
+}
+
+/* Result */
+#result {
+    margin-top: 25px;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    background-color: #f3f4f6;
+    color: #1f2937;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple To-Do List</title>
+    <link rel="stylesheet" href="todo.css">
+        <script src="todo.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>To-Do List</h2>
+
+    <div class="task" id="task1">
+        <span>Complete Lab Task</span>
+        <div class="btn-group">
+            <button type="button" class="complete-btn" onclick="completeTask('task1')">Complete</button>
+            <button type="button" class="remove-btn" onclick="removeTask('task1')">Remove</button>
+        </div>
+    </div>
+
+    <div class="task" id="task2">
+        <span>Practice JavaScript</span>
+        <div class="btn-group">
+            <button type="button" class="complete-btn" onclick="completeTask('task2')">Complete</button>
+            <button type="button" class="remove-btn" onclick="removeTask('task2')">Remove</button>
+        </div>
+    </div>
+
+    <div class="task" id="task3">
+        <span>Review DOM Concepts</span>
+        <div class="btn-group">
+            <button type="button" class="complete-btn" onclick="completeTask('task3')">Complete</button>
+            <button type="button" class="remove-btn" onclick="removeTask('task3')">Remove</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

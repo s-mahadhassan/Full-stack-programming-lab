@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+    <script src="quiz.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+    <h2>Simple Quiz</h2>
+
+    <div class="question">
+        <p>1. What is 2 + 2?</p>
+        <input type="text" id="q1">
+    </div>
+
+    <div class="question">
+        <p>2. What is the capital of Pakistan?</p>
+        <input type="text" id="q2">
+    </div>
+
+    <div class="question">
+        <p>3. JavaScript is used for web-development? YES/NO</p>
+        <input type="text" id="q3">
+    </div>
+
+ <button type="button" class="submit-btn" onclick="checkQuiz()">Submit</button>
+<button type="button" class="reset-btn" onclick="resetQuiz()">Reset</button>
+
+    <h3 id="result"></h3>
+
+</div>
+
+</body>
+</html>
+
