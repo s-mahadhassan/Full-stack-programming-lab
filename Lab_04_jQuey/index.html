@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Web Development Lab</title>
+    
+    <!-- Google Fonts for Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- jQuery UI CDN for Drag and Drop (Task 7) -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">FS Lab 4 Tasks</h1>
+
+        <!-- =========================================
+             MAIN MENU
+             ========================================= -->
+        <div id="menu-container" class="menu-grid">
+            <div class="menu-card" data-target="task-1">
+                <div class="icon-lg">📝</div>
+                <h3>Task 1: Dynamic List</h3>
+                <p>Add and remove list items dynamically with interactive highlighting.</p>
+            </div>
+            <div class="menu-card" data-target="task-3">
+                <div class="icon-lg">🔒</div>
+                <h3>Task 2: Form Validation</h3>
+                <p>Build an interactive form with client-side validation using blur events.</p>
+            </div>
+            <div class="menu-card" data-target="task-6">
+                <div class="icon-lg">☁️</div>
+                <h3>Task 3: API Data Fetcher</h3>
+                <p>Dynamically fetch and display JSON data using external public API.</p>
+            </div>
+            <div class="menu-card" data-target="task-7">
+                <div class="icon-lg">↕️</div>
+                <h3>Task 4: Sortable List</h3>
+                <p>Enable drag-and-drop sorting of items with dynamic visual updates.</p>
+            </div>
+        </div>
+
+        <!-- =========================================
+             TASKS VIEW CONTAINER
+             ========================================= -->
+        <div id="tasks-container" style="display: none;">
+            <button id="back-btn" class="btn-secondary btn-back">&larr; Back to Menu</button>
+            
+            <!-- TASK 1: DYNAMIC LIST MANAGER -->
+            <section class="task-card" id="task-1" style="display: none;">
+                <h2><span class="icon">📝</span> Task 1: Dynamic List Manager</h2>
+                <div class="list-controls">
+                    <input type="text" id="item-input" placeholder="Type an item here...">
+                    <button id="add-item-btn">Add Item</button>
+                </div>
+                <ul class="dynamic-list" id="dynamic-list">
+                    <!-- Items will be dynamically added here -->
+                </ul>
+            </section>
+
+            <!-- TASK 2: INTERACTIVE FORM VALIDATION -->
+            <section class="task-card" id="task-3" style="display: none;">
+                <h2><span class="icon">🔒</span> Task 3: Interactive Form Validation</h2>
+                <form id="validation-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe">
+                        <div class="error-msg" id="name-error">Please enter a valid name (min 2 characters).</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com">
+                        <div class="error-msg" id="email-error">Please enter a valid email address.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Min. 6 characters">
+                        <div class="error-msg" id="password-error">Password must be at least 6 characters long.</div>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn">Submit Form</button>
+                    <div class="success-msg" id="form-success" style="display: none;">Form submitted successfully!</div>
+                </form>
+            </section>
+
+            <!-- TASK 3: API DATA FETCHER -->
+            <section class="task-card" id="task-6" style="display: none;">
+                <h2><span class="icon">☁️</span> Task 6: API Data Fetcher</h2>
+                <div class="api-controls">
+                    <button id="fetch-data-btn">Load Data</button>
+                    <button id="load-more-btn" style="display: none;" class="btn-secondary">Load More</button>
+                    <span id="loading-indicator" class="loader" style="display: none;"></span>
+                </div>
+                
+                <div class="data-grid" id="data-container">
+                    <!-- API Data will be displayed here -->
+                </div>
+            </section>
+
+            <!-- TASK 4: DRAG-AND-DROP SORTABLE LIST -->
+            <section class="task-card" id="task-7" style="display: none;">
+                <h2><span class="icon">↕️</span> Task 7: Drag-and-Drop Sortable List</h2>
+                <p class="subtitle">Drag items to reorder them.</p>
+                <ul class="sortable-list" id="sortable-list">
+                    <li class="sortable-item" data-id="1">
+                        <span class="drag-handle">☰</span> Learn HTML & CSS
+                    </li>
+                    <li class="sortable-item" data-id="2">
+                        <span class="drag-handle">☰</span> Master JavaScript
+                    </li>
+                    <li class="sortable-item" data-id="3">
+                        <span class="drag-handle">☰</span> Understand DOM Manipulation
+                    </li>
+                    <li class="sortable-item" data-id="4">
+                        <span class="drag-handle">☰</span> Learn jQuery
+                    </li>
+                </ul>
+                <div class="order-status" id="order-status">
+                    <strong>Current Order:</strong> <span id="current-order">1, 2, 3, 4</span>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>

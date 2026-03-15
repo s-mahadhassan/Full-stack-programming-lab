@@ -1,0 +1,366 @@
+/* =========================================
+   CSS RESET & MODERN VARIABLES 
+   ========================================= */
+:root {
+    --primary: #4F46E5;
+    --primary-hover: #4338CA;
+    --danger: #EF4444;
+    --danger-hover: #DC2626;
+    --success: #10B981;
+    --bg: #F9FAFB;
+    --surface: #FFFFFF;
+    --text-main: #111827;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --focus-ring: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* =========================================
+   MENU NAVIGATION 
+   ========================================= */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease;
+}
+
+.menu-card {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.icon-lg {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.menu-card h3 {
+    color: var(--text-main);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s;
+}
+
+.menu-card:hover h3 {
+    color: var(--primary);
+}
+
+.menu-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.btn-back {
+    margin-bottom: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+/* =========================================
+   TASK STYLES
+   ========================================= */
+.task-card {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.task-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.task-card h2 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--bg);
+    padding-bottom: 0.75rem;
+}
+
+.subtitle {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   GLOBAL FORM & BUTTON ELEMENTS 
+   ========================================= */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: var(--focus-ring);
+}
+
+input.invalid {
+    border-color: var(--danger);
+    background-color: #FEF2F2;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover { background-color: var(--primary-hover); }
+button:active { transform: scale(0.97); }
+
+.btn-secondary {
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+.btn-secondary:hover { background-color: #EEF2FF; }
+
+.btn-danger { background-color: var(--danger); padding: 0.4rem 0.8rem; font-size: 0.875rem;}
+.btn-danger:hover { background-color: var(--danger-hover); }
+
+/* =========================================
+   TASK 1: DYNAMIC LIST MANAGER
+   ========================================= */
+.list-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.list-controls input { flex: 1; }
+
+.dynamic-list {
+    list-style: none;
+}
+
+.dynamic-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+    animation: slideDown 0.3s ease;
+}
+
+.dynamic-list li:hover {
+    background-color: #EEF2FF;
+    border-color: #C7D2FE;
+    transform: translateX(4px);
+}
+
+/* =========================================
+   TASK 3: INTERACTIVE FORM VALIDATION
+   ========================================= */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.error-msg {
+    color: var(--danger);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.success-msg {
+    background-color: #ECFDF5;
+    color: var(--success);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border: 1px solid #A7F3D0;
+    text-align: center;
+    font-weight: 500;
+    animation: slideDown 0.3s ease;
+}
+
+/* =========================================
+   TASK 6: API DATA FETCHER
+   ========================================= */
+.api-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.loader {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--border);
+    border-bottom-color: var(--primary);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.data-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+.data-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.25rem;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    animation: slideDown 0.4s ease;
+}
+
+.data-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+.data-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main); text-transform: capitalize; }
+.data-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+/* =========================================
+   TASK 7: DRAG-AND-DROP SORTABLE LIST
+   ========================================= */
+.sortable-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.sortable-item {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: grab;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.sortable-item:active { cursor: grabbing; }
+.drag-handle { color: var(--text-muted); cursor: grab; font-size: 1.2rem; }
+
+/* jQuery UI Drag state class */
+.ui-sortable-helper {
+    box-shadow: var(--shadow-md);
+    background-color: #EEF2FF;
+    border-color: var(--primary);
+    opacity: 0.9;
+}
+
+.ui-sortable-placeholder {
+    border: 2px dashed #C7D2FE;
+    background: #FAFAFA;
+    border-radius: 8px;
+    visibility: visible !important;
+}
+
+.order-status {
+    background-color: var(--bg);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+.order-status span { color: var(--primary); font-weight: 600; }
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
