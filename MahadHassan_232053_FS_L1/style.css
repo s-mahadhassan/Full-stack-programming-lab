@@ -1,0 +1,365 @@
+/* Mobile Device Frame Styles */
+
+body {
+    background-color: #e0e0e0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* The Phone Bezel */
+.phone-frame {
+    background-color: #111;
+    /* Glossy Black Bezel */
+    border-radius: 40px;
+    padding: 80px 15px 80px 15px;
+    /* Top/Bottom heavy bezel */
+    box-shadow:
+        0 0 0 2px #555,
+        /* Outer metallic rim */
+        0 10px 40px rgba(0, 0, 0, 0.6);
+    /* Drop shadow */
+    display: inline-block;
+    position: relative;
+    user-select: none;
+}
+
+/* Screen Area */
+.screen-area {
+    background-color: white;
+    width: 320px;
+    /* iPhone 5-ish width */
+    height: 568px;
+    /* iPhone 5-ish height */
+    overflow-y: auto;
+    /* Scrollable content */
+    overflow-x: hidden;
+    position: relative;
+    border: 1px solid #000;
+}
+
+/* Hide scrollbar for cleaner look */
+.screen-area::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* Home Button */
+.home-button {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at center, #222 0%, #111 60%);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    /* Interactive feel */
+}
+
+.home-button::after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Speaker/Camera Notch */
+.top-speaker {
+    width: 60px;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.front-camera {
+    width: 10px;
+    height: 10px;
+    background: #222;
+    border-radius: 50%;
+    position: absolute;
+    top: 38px;
+    left: 35%;
+    /* Left of speaker */
+    box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* Main App Styles (Refactored to fit inside screen-area) */
+.app-header {
+    background-color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+}
+
+.red-band {
+    background-color: #990000;
+    height: 30px;
+    width: 100%;
+    margin-top: 15px;
+    position: absolute;
+    top: 5px;
+    z-index: 1;
+}
+
+.logo-wrapper {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    background: transparent;
+}
+
+.logo-wrapper img {
+    height: 70px;
+    margin-top: 5px;
+}
+
+.header-title {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #444;
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+/* Accordion Styles */
+.accordion-section {
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion-header {
+    background: linear-gradient(to bottom, #4c4c4c 0%, #1a1a1a 100%);
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #666;
+}
+
+.accordion-header.active {
+    background: linear-gradient(to bottom, #1E5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.accordion-content {
+    background-color: #f9f9f9;
+    padding: 15px;
+    display: none;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.required-star {
+    color: red;
+    font-size: 1.1rem;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #fafafa 0%, #fff 100%);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #1E5799;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 4px rgba(30, 87, 153, 0.4);
+}
+
+.valid-check {
+    position: absolute;
+    right: 15px;
+    top: 32px;
+    color: #76C22E;
+    font-size: 1.1rem;
+    display: none;
+    pointer-events: none;
+}
+
+.form-control.valid+.valid-check {
+    display: block;
+}
+
+.btn-submit {
+    background: linear-gradient(to bottom, #104E8B 0%, #08305A 100%);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Intro Screen Styles */
+#intro-screen {
+    background-color: white;
+    height: 100%;
+    /* Full height of screen-area */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Ensure it overlays everything else if needed, though structure handles this */
+}
+
+/* Red band in middle */
+.intro-red-band {
+    background-color: #990000;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    z-index: 1;
+}
+
+/* Big Logo */
+.intro-logo-wrapper {
+    z-index: 2;
+    background: transparent;
+    margin-bottom: 20px;
+    /* Logo should sit on top of band */
+}
+
+.intro-logo-wrapper img {
+    height: 120px;
+    /* Larger than header logo */
+}
+
+/* Text */
+.intro-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+/* Sign Up Button */
+#btn-start-signup {
+    background-color: white;
+    color: #104E8B;
+    /* Dark Blue */
+    border: 1px solid #104E8B;
+    padding: 12px 50px;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: normal;
+    /* As per image looks standard */
+    z-index: 2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#btn-start-signup:hover {
+    background-color: #f5f5f5;
+}
+
+/* Ensure screen-area has height for flex to work */
+.screen-area {
+    /* ... existing styles ... */
+    display: flex;
+    /* Make direct children fill space */
+    flex-direction: column;
+}
+
+#intro-screen,
+#main-app {
+    flex: 1;
+    width: 100%;
+}
+
+#main-app {
+    overflow-y: auto;
+    /* Scrollable form */
+}
+
+/* Success Screen Styles */
+#success-screen {
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 80px;
+    color: #76C22E;
+    margin-bottom: 20px;
+}
+
+.success-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.success-message {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+#btn-back-home {
+    background: linear-gradient(to bottom, #104E8B 0%, #08305A 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}

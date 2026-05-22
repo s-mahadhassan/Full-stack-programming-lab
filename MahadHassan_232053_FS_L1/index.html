@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Renewal</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons (simulated via text for now) -->
+</head>
+
+<body>
+
+    <div class="phone-frame">
+        <div class="top-speaker"></div>
+        <div class="front-camera"></div>
+
+        <div class="screen-area">
+            <!-- Intro Screen -->
+            <div id="intro-screen">
+                <div class="intro-red-band"></div>
+                <div class="intro-logo-wrapper">
+                    <img src="logo.png" alt="Talyllyn Railway Crest">
+                </div>
+                <h1 class="intro-title">Online Membership purchase and Renewals</h1>
+                <button type="button" id="btn-start-signup">Sign Up</button>
+            </div>
+            <!-- Main App (Hidden initially) -->
+            <div id="main-app" style="display: none;">
+                <!-- Header -->
+                <div class="app-header">
+                    <div class="red-band"></div>
+                    <div class="logo-wrapper">
+                        <img src="logo.png" alt="Talyllyn Railway Crest">
+                    </div>
+                    <h2 class="header-title">Set up Direct Debit for membership renewal</h2>
+                </div>
+
+                <form id="membershipForm">
+
+                    <!-- Section 1: Basic Info -->
+                    <div class="accordion-section">
+                        <div class="accordion-header active" data-target="#basic-info">
+                            Your Basic Info
+                            <span class="icon-toggle">-</span>
+                        </div>
+                        <div id="basic-info" class="accordion-content" style="display: block;">
+                            <div class="form-group">
+                                <label class="form-label">Title <span class="required-star">*</span></label>
+                                <input type="text" class="form-control" name="title" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">First Name <span class="required-star">*</span></label>
+                                <input type="text" class="form-control" name="firstName" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name <span class="required-star">*</span></label>
+                                <input type="text" class="form-control" name="lastName" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Date of Birth <span class="required-star">*</span></label>
+                                <input type="text" class="form-control datepicker" name="dob" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <!-- Membership Class Dropdown for logic -->
+                            <div class="form-group">
+                                <label class="form-label">Membership Class <span class="required-star">*</span></label>
+                                <select class="form-control" name="membershipClass" required>
+                                    <option value="">Select Class...</option>
+                                    <option value="Ordinary">Ordinary Member (£25)</option>
+                                    <option value="Senior">Senior (£20)</option>
+                                    <option value="Junior">Junior (£15)</option>
+                                    <option value="Life">Life Member (£500)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Contact Details -->
+                    <div class="accordion-section">
+                        <div class="accordion-header" data-target="#contact-details">
+                            Your contact details
+                            <span class="icon-toggle">+</span>
+                        </div>
+                        <div id="contact-details" class="accordion-content">
+                            <div class="form-group">
+                                <label class="form-label">Contact number <span class="required-star">*</span></label>
+                                <input type="tel" class="form-control" name="phone" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Alternative contact number</label>
+                                <input type="tel" class="form-control" name="altPhone">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email address <span class="required-star">*</span></label>
+                                <input type="email" class="form-control" name="email" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Confirm email address <span
+                                        class="required-star">*</span></label>
+                                <input type="email" class="form-control" name="confirmEmail" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Account Address -->
+                    <div class="accordion-section">
+                        <div class="accordion-header" data-target="#account-address">
+                            Your account address
+                            <span class="icon-toggle">+</span>
+                        </div>
+                        <div id="account-address" class="accordion-content">
+                            <div class="form-group">
+                                <label class="form-label">Postcode <span class="required-star">*</span></label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="text" class="form-control" name="postcode" required
+                                        style="width: 50%;">
+                                    <button type="button"
+                                        style="width: 50%; border-radius: 5px; border: 1px solid #ccc; background: #eee;">Find
+                                        Address</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Address line 1 <span class="required-star">*</span></label>
+                                <input type="text" class="form-control" name="address1" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Address line 2</label>
+                                <input type="text" class="form-control" name="address2">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Town <span class="required-star">*</span></label>
+                                <input type="text" class="form-control" name="town" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">County</label>
+                                <input type="text" class="form-control" name="county">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Bank Details -->
+                    <div class="accordion-section">
+                        <div class="accordion-header" data-target="#bank-details">
+                            Your bank details
+                            <span class="icon-toggle">+</span>
+                        </div>
+                        <div id="bank-details" class="accordion-content">
+                            <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">
+                                This is the bank account from where the Direct Debit payments will be taken.
+                            </p>
+                            <div class="form-group">
+                                <label class="form-label">Account holder name <span
+                                        class="required-star">*</span></label>
+                                <input type="text" class="form-control" name="accountHolder" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Sort code <span class="required-star">*</span></label>
+                                <div style="display: flex; gap: 5px;">
+                                    <input type="text" class="form-control" name="sc1" maxlength="2"
+                                        style="text-align: center;" required>
+                                    <input type="text" class="form-control" name="sc2" maxlength="2"
+                                        style="text-align: center;" required>
+                                    <input type="text" class="form-control" name="sc3" maxlength="2"
+                                        style="text-align: center;" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Account number <span class="required-star">*</span></label>
+                                <input type="text" class="form-control" name="accountNumber" maxlength="8" required>
+                                <span class="valid-check">✔</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="padding: 15px;">
+                        <div class="form-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms" style="font-size: 0.8rem;">I agree to the Terms & Conditions</label>
+                        </div>
+                        <button type="submit" class="btn-submit">Next</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Success Screen (Hidden initially) -->
+            <div id="success-screen" style="display: none;">
+                <div class="success-content">
+                    <div class="success-icon">✔</div>
+                    <h2 class="success-title">Application Submitted Successfully!</h2>
+                    <p class="success-message">Thank you for setting up your Direct Debit. We have sent a confirmation
+                        email to your address.</p>
+                    <button type="button" id="btn-back-home">Back to Home</button>
+                </div>
+            </div>
+        </div>
+        <div class="home-button"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
