@@ -1,0 +1,11 @@
+{
+  "name": "fs-lab-6-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "counter-app",
+    "user-form-app",
+    "event-app",
+    "routing-app"
+  ]
+}
