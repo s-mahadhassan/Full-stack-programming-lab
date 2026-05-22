@@ -1,0 +1,49 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.greeting-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.greeting-card {
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.greeting-card:hover {
+  transform: translateY(-5px);
+}
+
+.greeting-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.greeting-card h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, 0.8);
+}
