@@ -1,0 +1,148 @@
+/* ============================================================
+   Rustik Plank – Category Page Styles
+   ============================================================ */
+
+.page-content {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.page-inner { width: 100%; }
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 16px;
+}
+.breadcrumb a { color: var(--orange); }
+.breadcrumb span { margin: 0 6px; }
+
+/* Page heading */
+.page-heading {
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  color: #333;
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.page-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 60px; height: 2px;
+  background: var(--orange);
+}
+
+/* Category product grid */
+.cat-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cat-product-card {
+  border: 1px solid var(--border);
+  transition: box-shadow 0.25s;
+}
+.cat-product-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+}
+
+.cat-product-img {
+  height: 200px;
+  background: linear-gradient(135deg, #d4b896, #c8a882);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  color: rgba(107,74,42,0.4);
+}
+
+.cat-product-info {
+  padding: 16px;
+}
+.cat-product-info h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 6px;
+}
+.cat-product-info p {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+.cat-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+.cat-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cat-actions .btn-add-cart {
+  padding: 7px 14px;
+  font-size: 11px;
+}
+.cat-actions .btn-detail {
+  padding: 7px 14px;
+  font-size: 11px;
+  border: 1px solid #ccc;
+  background: none;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.2s;
+}
+.cat-actions .btn-detail:hover {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+}
+
+/* Product detail layout (for product.html) */
+.product-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.product-detail-img {
+  height: 400px;
+  background: linear-gradient(135deg, #d4b896, #c8a882);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  color: rgba(107,74,42,0.35);
+  border: 1px solid var(--border);
+}
+.product-detail-info h2 {
+  font-size: 26px; font-weight: normal; color: #222; margin-bottom: 10px;
+}
+.product-detail-info .det-price {
+  font-size: 34px; font-weight: bold; color: var(--orange); margin-bottom: 16px;
+}
+.product-detail-info p {
+  font-size: 13px; color: #666; line-height: 1.8; margin-bottom: 16px;
+}
+.product-detail-info .det-actions {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cat-product-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-detail-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .cat-product-grid { grid-template-columns: 1fr; }
+}

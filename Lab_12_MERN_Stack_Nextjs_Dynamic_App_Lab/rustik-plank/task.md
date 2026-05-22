@@ -1,0 +1,25 @@
+# Rustik Plank eCommerce Task List
+
+- [ ] Planning Stage
+  - [ ] Analyze existing static files (HTML/CSS)
+  - [ ] Plan backend architecture (Express, MongoDB)
+  - [ ] Plan frontend architecture (Next.js, Tailwind CSS)
+  - [ ] Create implementation plan and review with user
+- [ ] Backend Implementation (Node.js/Express/MongoDB)
+  - [ ] Initialize Express app and setup project structure
+  - [ ] Setup MongoDB connection
+  - [ ] Create Product and User models
+  - [ ] Implement Product CRUD API routes
+  - [ ] Implement User authentication API routes (optional/if needed for CRUD)
+- [ ] Frontend Implementation (Next.js)
+  - [ ] Initialize Next.js project with Tailwind CSS
+  - [ ] Port existing CSS and assets to Next.js public/styles
+  - [ ] Create shared components (Header, Footer, Navigation)
+  - [ ] Implement Homepage ([index.html](file:///c:/Users/rpmh4/Downloads/files/rustik-plank-website/rustik-plank/index.html))
+  - [ ] Implement Category Pages (beds, bookcases, boxes, cabinets, chairs, tables)
+  - [ ] Implement Product Details Page ([product.html](file:///c:/Users/rpmh4/Downloads/files/rustik-plank-website/rustik-plank/product.html))
+  - [ ] Fetch dynamic data from the Express API
+- [ ] Integration and Final Polish
+  - [ ] Test CRUD operations (via Postman or Admin UI if required)
+  - [ ] Test responsiveness and ensure visual fidelity to original design
+  - [ ] Clean up and create walkthrough
