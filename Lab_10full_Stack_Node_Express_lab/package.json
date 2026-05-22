@@ -1,0 +1,14 @@
+{
+  "name": "lab-10-node-express",
+  "version": "1.0.0",
+  "description": "Lab 10 backend assignment console for Mahad Hassan (232053)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "author": "Mahad Hassan (232053)",
+  "license": "ISC"
+}
