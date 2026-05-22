@@ -1,0 +1,853 @@
+/* 
+   =========================================
+   Lab 13 API Hub: Sunset Warm CSS Design System
+   Developer: Mahad Hassan (RegID: 232053)
+   =========================================
+*/
+
+/* Core Global Configuration & Warm Theme Design Variables */
+:root {
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Obsidian Sunset Warm Palette */
+  --bg-deep: #0c0605;
+  --bg-canvas: #130a08;
+  --bg-glass: rgba(26, 14, 11, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.06);
+  --border-glass-focus: rgba(245, 158, 11, 0.25);
+
+  --text-main: #fcf8f7;
+  --text-muted: #dcd1cd;
+  --text-dark: #8c7772;
+
+  /* Weather Theme: Yellowish Amber / Gold */
+  --weather-primary: hsl(45, 100%, 52%);
+  --weather-glow: rgba(245, 158, 11, 0.15);
+  --weather-glow-heavy: rgba(245, 158, 11, 0.45);
+  --weather-text: hsl(45, 100%, 58%);
+
+  /* News Theme: Sunset Red / Crimson */
+  --news-red: hsl(5, 85%, 55%);
+  --news-glow-red: rgba(239, 68, 68, 0.18);
+  --news-glow-heavy: rgba(239, 68, 68, 0.45);
+  --news-border-red: rgba(239, 68, 68, 0.35);
+  
+  /* Shared Secondary: Warm Golden-Orange */
+  --accent-orange: hsl(24, 95%, 52%);
+  --accent-orange-glow: rgba(249, 115, 22, 0.2);
+
+  /* Status / Success Colors */
+  --success: #10b981;
+  --success-glow: rgba(16, 185, 129, 0.25);
+  --danger: #ef4444;
+  --danger-glow: rgba(239, 68, 68, 0.25);
+
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(239, 68, 68, 0.09) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(249, 115, 22, 0.05) 0px, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+/* Layout Core Wrapper */
+.app-header, .health-panel, .dashboard-canvas, .app-footer {
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ================================================= */
+/* 🏠 HEADER & DEVELOPER CARD                        */
+/* ================================================= */
+.app-header {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--weather-primary), var(--news-red));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--bg-deep);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+.logo-text h1 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, #ffffff, var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-text p {
+  color: var(--weather-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+}
+
+/* Developer Identity Card */
+.developer-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 16px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glow);
+  transition: var(--transition-smooth);
+}
+
+.developer-card:hover {
+  border-color: var(--weather-primary);
+  transform: translateY(-2px);
+}
+
+.dev-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--weather-primary);
+}
+
+.dev-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.2px;
+}
+
+.dev-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 3px;
+}
+
+.meta-tag {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meta-tag i {
+  color: var(--news-red);
+}
+
+/* ================================================= */
+/* 📡 DIAGNOSTICS & SYSTEM STATUS CARD               */
+/* ================================================= */
+.health-panel {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glow);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.panel-title i {
+  color: var(--accent-orange);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.status-card {
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--text-dark);
+  position: relative;
+}
+
+/* Online Pulse Animation */
+.pulse-dot.online {
+  background-color: var(--success);
+  box-shadow: 0 0 0 0 var(--success-glow);
+  animation: pulse-green 2s infinite;
+}
+
+/* Offline Pulse Animation */
+.pulse-dot.offline {
+  background-color: var(--danger);
+  box-shadow: 0 0 0 0 var(--danger-glow);
+  animation: pulse-red 2s infinite;
+}
+
+.status-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 var(--success-glow);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 var(--danger-glow);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* ================================================= */
+/* ⚡ MAIN DASHBOARD GRID CANVAS                      */
+/* ================================================= */
+.dashboard-canvas {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.section-panel {
+  border-radius: 24px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-glow);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  transition: var(--transition-smooth);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.panel-header h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.3px;
+}
+
+/* Specific Panel Themes */
+/* A. Weather: Amber/Yellow Theme */
+.weather-panel {
+  box-shadow: 0 8px 32px 0 rgba(245, 158, 11, 0.03), var(--shadow-glow);
+}
+.weather-panel:hover {
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(245, 158, 11, 0.06), var(--shadow-glow);
+}
+.weather-panel .panel-icon {
+  background: var(--weather-glow);
+  color: var(--weather-primary);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* B. News: Reddish Theme */
+.news-panel {
+  box-shadow: 0 8px 32px 0 rgba(239, 68, 68, 0.03), var(--shadow-glow);
+}
+.news-panel:hover {
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(239, 68, 68, 0.06), var(--shadow-glow);
+}
+.news-panel .panel-icon {
+  background: var(--news-glow-red);
+  color: var(--news-red);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ================================================= */
+/* 🔍 SEARCH AND INPUT CONTROLS                     */
+/* ================================================= */
+.query-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 14px;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.query-box input, .query-box select {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.6rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.query-box input:focus, .query-box select:focus {
+  border-color: var(--accent-orange);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Custom styling for select option list */
+.query-box select option {
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+}
+
+/* BUTTONS */
+.theme-btn-weather, .theme-btn-news {
+  padding: 0 1.5rem;
+  border-radius: 12px;
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+/* Weather Search Button (Yellow/Gold Theme) */
+.theme-btn-weather {
+  background: var(--weather-primary);
+  color: var(--bg-deep);
+  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.35);
+}
+.theme-btn-weather:hover {
+  background: hsl(45, 100%, 45%);
+  box-shadow: 0 6px 20px 0 rgba(245, 158, 11, 0.5);
+  transform: translateY(-1px);
+}
+
+/* News Search Button (Reddish Theme) */
+.theme-btn-news {
+  background: var(--news-red);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.35);
+}
+.theme-btn-news:hover {
+  background: hsl(5, 85%, 48%);
+  box-shadow: 0 6px 20px 0 rgba(239, 68, 68, 0.5);
+  transform: translateY(-1px);
+}
+
+/* ================================================= */
+/* 📱 DATA DISPLAY CONTAINER SCREEN                  */
+/* ================================================= */
+.data-view-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.01);
+  padding: 1.5rem;
+  position: relative;
+  min-height: 280px;
+}
+
+/* Hidden Utility class */
+.hidden {
+  display: none !important;
+}
+
+/* A. Loaders */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.loader i {
+  font-size: 2.2rem;
+  color: var(--text-muted);
+}
+.weather-panel .loader i {
+  color: var(--weather-primary);
+}
+.news-panel .loader i {
+  color: var(--news-red);
+}
+.loader p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* B. Placeholders */
+.placeholder-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 320px;
+  gap: 15px;
+}
+.placeholder-screen i {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.03);
+}
+.placeholder-screen p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* C. Dynamic Results View Layouts */
+.results-screen {
+  width: 100%;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Weather Results Styles */
+.weather-main-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.city-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.temp-display {
+  font-family: var(--font-display);
+  font-size: 4.2rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--weather-primary);
+  line-height: 1.1;
+  margin: 0.5rem 0;
+  text-shadow: 0 0 35px var(--weather-glow-heavy);
+}
+
+.temp-display .unit {
+  font-size: 2rem;
+  font-weight: 500;
+  vertical-align: super;
+  letter-spacing: 0;
+  margin-left: 2px;
+}
+
+.weather-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 30px;
+  background: var(--weather-glow);
+  color: var(--weather-primary);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.weather-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+
+.metric-item {
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.metric-item i {
+  font-size: 1.3rem;
+  color: var(--weather-primary);
+}
+
+.metric-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* News Results Styles */
+.news-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 8px;
+}
+
+.news-list-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.count-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--news-glow-red);
+  color: var(--news-red);
+  border: 1px solid var(--news-border-red);
+  font-weight: 600;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Dynamic News Card */
+.news-card {
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border-left: 3px solid var(--news-red);
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  border-right: 1px solid rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+.news-card:hover {
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateX(4px);
+  border-left-color: var(--weather-primary);
+}
+
+/* Even item accent variation */
+.news-card:nth-child(even) {
+  border-left-color: var(--weather-primary);
+}
+.news-card:nth-child(even):hover {
+  border-left-color: var(--news-red);
+}
+
+.news-card-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-main);
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.news-card-title:hover {
+  color: var(--news-red);
+}
+
+.news-card:nth-child(even) .news-card-title:hover {
+  color: var(--weather-primary);
+}
+
+.news-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.news-source {
+  font-weight: 700;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.news-date {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ================================================= */
+/* ⚠️ ERROR VIEW SCREENS                             */
+/* ================================================= */
+.error-screen {
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: var(--danger-glow);
+  border: 1px solid var(--danger);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: pulse-border 2s infinite;
+}
+
+.error-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.error-header i {
+  font-size: 1.1rem;
+}
+
+.error-screen p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+
+.error-action {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(239, 68, 68, 0.15);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.error-action code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-main);
+  font-family: monospace;
+}
+
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.2); }
+  70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* ================================================= */
+/* 🐾 FOOTER                                         */
+/* ================================================= */
+.app-footer {
+  padding: 2.5rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-glass);
+  color: var(--text-dark);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.copyright {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ================================================= */
+/* 📱 RESPONSIVE ADJUSTMENTS                         */
+/* ================================================= */
+@media (max-width: 1024px) {
+  .dashboard-canvas {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .section-panel {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+  }
+
+  .developer-card {
+    width: 100%;
+  }
+
+  .query-box {
+    flex-direction: column;
+  }
+
+  .theme-btn-weather, .theme-btn-news {
+    padding: 0.85rem;
+    justify-content: center;
+  }
+  
+  .weather-metrics {
+    grid-template-columns: 1fr;
+  }
+}

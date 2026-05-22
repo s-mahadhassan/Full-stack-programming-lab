@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 13 Microservice API Hub</title>
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Vanilla CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Header Area with Developer Identity -->
+  <header class="app-header">
+    <div class="header-logo">
+      <div class="logo-icon"><i class="fa-solid fa-network-wired"></i></div>
+      <div class="logo-text">
+        <h1>Microservice Hub</h1>
+        <p>Lab 13 API Core Console</p>
+      </div>
+    </div>
+    
+    <!-- Developer Identity Metadata -->
+    <div class="developer-card">
+      <div class="dev-avatar">
+        <i class="fa-solid fa-user-shield"></i>
+      </div>
+      <div class="dev-details">
+        <div class="dev-name" id="dev-name">Mahad Hassan</div>
+        <div class="dev-meta">
+          <span class="meta-tag"><i class="fa-solid fa-id-card"></i> 232053</span>
+          <span class="meta-tag"><i class="fa-solid fa-graduation-cap"></i> BSSE-6A</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Health Connection Panel -->
+  <section class="health-panel">
+    <div class="panel-title">
+      <i class="fa-solid fa-circle-nodes"></i>
+      <span>Microservice Connectivity Diagnostics</span>
+    </div>
+    <div class="status-grid">
+      <!-- Weather API Status -->
+      <div class="status-card" id="status-weather-card">
+        <div class="status-indicator">
+          <span class="pulse-dot" id="weather-dot"></span>
+          <span class="status-label">Weather Service (:5001)</span>
+        </div>
+        <div class="status-meta" id="weather-meta">Checking status...</div>
+      </div>
+      <!-- News API Status -->
+      <div class="status-card" id="status-news-card">
+        <div class="status-indicator">
+          <span class="pulse-dot" id="news-dot"></span>
+          <span class="status-label">News Service (:5002)</span>
+        </div>
+        <div class="status-meta" id="news-meta">Checking status...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Dashboard Canvas -->
+  <main class="dashboard-canvas">
+    
+    <!-- Left Section: Weather Forecast API (Yellowish Amber Theme) -->
+    <section class="section-panel weather-panel">
+      <div class="panel-header">
+        <div class="panel-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+        <h2>Weather Forecast API</h2>
+      </div>
+      
+      <div class="query-box">
+        <div class="input-wrapper">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" id="weather-city-input" placeholder="Search City (e.g. Islamabad, London)..." value="Islamabad">
+        </div>
+        <button id="weather-search-btn" class="theme-btn-weather">
+          <span>Search</span>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <!-- Weather Response View Container -->
+      <div class="data-view-container">
+        <!-- Loader -->
+        <div id="weather-loader" class="loader hidden">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <p>Contacting Weather Microservice...</p>
+        </div>
+
+        <!-- Dynamic Results Screen -->
+        <div id="weather-results" class="results-screen hidden">
+          <div class="weather-main-info">
+            <h3 class="city-name" id="w-city-title">Islamabad</h3>
+            <div class="temp-display">
+              <span id="w-temp">--</span><span class="unit">°C</span>
+            </div>
+            <div class="weather-badge" id="w-condition">Scattered Clouds</div>
+          </div>
+          
+          <div class="weather-metrics">
+            <div class="metric-item">
+              <i class="fa-solid fa-droplet"></i>
+              <div class="metric-content">
+                <span class="metric-value" id="w-humidity">--%</span>
+                <span class="metric-label">Humidity Level</span>
+              </div>
+            </div>
+            <div class="metric-item">
+              <i class="fa-solid fa-temperature-half"></i>
+              <div class="metric-content">
+                <span class="metric-value">Metric</span>
+                <span class="metric-label">Units Standard</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Initial/Placeholder Message Screen -->
+        <div id="weather-placeholder" class="placeholder-screen">
+          <i class="fa-solid fa-sun-cloud"></i>
+          <p>Enter a city name and search to fetch live weather telemetry from OpenWeather API.</p>
+        </div>
+
+        <!-- Error Dialog Screen -->
+        <div id="weather-error" class="error-screen hidden">
+          <div class="error-header">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <h4 id="w-error-title">API Response Error</h4>
+          </div>
+          <p id="w-error-message">Downstream server rejected the request.</p>
+          <div class="error-action" id="w-error-guide">
+            <i class="fa-solid fa-key-skeleton"></i>
+            <span>Tip: Ensure OPENWEATHER_API_KEY is active in <code>backend-weather/.env</code></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Section: News Headlines API (Red & Blue Theme) -->
+    <section class="section-panel news-panel">
+      <div class="panel-header">
+        <div class="panel-icon"><i class="fa-solid fa-newspaper"></i></div>
+        <h2>News Headlines API</h2>
+      </div>
+
+      <div class="query-box">
+        <div class="input-wrapper">
+          <i class="fa-solid fa-earth-americas"></i>
+          <select id="news-country-select">
+            <option value="us" selected>United States (US)</option>
+            <option value="pk">Pakistan (PK)</option>
+            <option value="gb">United Kingdom (GB)</option>
+            <option value="ca">Canada (CA)</option>
+            <option value="au">Australia (AU)</option>
+          </select>
+        </div>
+        <button id="news-search-btn" class="theme-btn-news">
+          <span>Get Headlines</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- News Response View Container -->
+      <div class="data-view-container">
+        <!-- Loader -->
+        <div id="news-loader" class="loader hidden">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <p>Gathering Headlines from NewsAPI...</p>
+        </div>
+
+        <!-- Dynamic Results Screen -->
+        <div id="news-results" class="results-screen hidden">
+          <div class="news-list-header">
+            <h3>Top 5 Curated Headlines</h3>
+            <span class="count-badge" id="news-count">5 Articles</span>
+          </div>
+          <div class="news-list" id="news-list-container">
+            <!-- Article cards will load here dynamically -->
+          </div>
+        </div>
+
+        <!-- Initial/Placeholder Message Screen -->
+        <div id="news-placeholder" class="placeholder-screen">
+          <i class="fa-solid fa-globe"></i>
+          <p>Select a country and request to fetch real-time news headlines from NewsAPI service.</p>
+        </div>
+
+        <!-- Error Dialog Screen -->
+        <div id="news-error" class="error-screen hidden">
+          <div class="error-header">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <h4 id="n-error-title">API Response Error</h4>
+          </div>
+          <p id="n-error-message">Downstream server rejected the request.</p>
+          <div class="error-action" id="n-error-guide">
+            <i class="fa-solid fa-key-skeleton"></i>
+            <span>Tip: Ensure NEWS_API_KEY is active in <code>backend-news/.env</code></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Lab 13: Integrated Web APIs & RESTful Communication. Design custom stylized client connected to Express servers.</p>
+    <p class="copyright">&copy; 2026 Mahad Hassan. BSSE-6A. RegId 232053.</p>
+  </footer>
+
+  <!-- Vanilla JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
